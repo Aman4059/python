@@ -1,0 +1,42 @@
+def led_brightness_control():
+    min_brightness = 0
+    max_brightness = 100
+    step_size = 10
+    brightness = 50  
+    print("Welcome to LED Brightness Control!")
+    print("Commands:")
+    print("'i' to increase brightness")
+    print("'d' to decrease brightness")
+    print("'q' to quit the program")
+
+    
+    while True:
+        
+        command = input("Enter command: ").strip().lower()
+
+        if command == 'i':
+            
+            if brightness + step_size <= max_brightness:
+                brightness += step_size
+                print(f"Brightness increased to: {brightness}%")
+            else:
+                print("Brightness is already at maximum!")
+        elif command == 'd':
+            
+            if brightness - step_size >= min_brightness:
+                brightness -= step_size
+                print(f"Brightness decreased to: {brightness}%")
+            else:
+                print("Brightness is already at minimum!")
+        elif command == 'q':
+            
+            print("Exiting LED Brightness Control. Goodbye!")
+            break
+        else:
+          
+            print("Invalid command. Please try again.")
+
+      
+        visual = '|' * (brightness // step_size)
+        print(f"Brightness Visual: [{visual}]\n")
+led_brightness_control()
